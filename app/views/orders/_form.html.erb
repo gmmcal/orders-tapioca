@@ -1,0 +1,34 @@
+<%= simple_form_for(@order) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-actions">
+    <%= f.button :submit, 'Criar Pedido', class: 'btn-primary' %>
+  </div>
+
+  <div class="form-inputs">
+    <%= f.input :name%>
+    <%= f.input :observations%>
+    <%= f.simple_fields_for :items do |i| %>
+      <%= i.input :product_id, as: :hidden %>
+      <div class="row text-center item">
+        <div class="col-md-12">
+          <h2><%= i.object.product %></h2>
+        </div>
+        <div class="col-md-1 col-sm-1">
+          <a href="#" class="btn btn-default glyphicon glyphicon-minus"></a>
+        </div>
+        <div class="col-md-10 col-sm-2">
+          <%= i.input :quantity, as: :tel, label: false, wrapper: false %>
+        </div>
+        <div class="col-md-1 col-sm-1">
+          <a href="#" class="btn btn-default glyphicon glyphicon-plus"></a>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div style="margin-top: 20px;"></div>
+  <div class="form-actions">
+    <%= f.button :submit, 'Criar Pedido', class: 'btn-primary' %>
+  </div>
+<% end %>

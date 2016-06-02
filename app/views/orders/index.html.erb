@@ -1,0 +1,22 @@
+<% if @order.present? %>
+  <h1>Nome: <%=@order.name%></h1>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Produto</th>
+        <th>Quantidade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @order.items.each do |item| %>
+        <tr>
+          <td><%=item.product%></td>
+          <td><%=item.quantity%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <a class="btn btn-primary" href="<%= close_order_path(@order)%>">Fechar pedido</a>
+<% else %>
+  <h1>Nenhum pedido encontrado</h1>
+<% end %>
